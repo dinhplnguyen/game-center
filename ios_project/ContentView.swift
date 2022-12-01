@@ -85,6 +85,7 @@ class GlobalString: ObservableObject {
 struct ContentView: View {
     
     @StateObject var globalString: GlobalString = GlobalString()
+    @StateObject var triviaManager: TriviaManager = TriviaManager()
     
     @State private var moves: [String] = ["", "", "", "", "", "", "", "", ""]
     // there are 9 possible views
@@ -106,7 +107,7 @@ struct ContentView: View {
                             HangmanGame(hangmanVariables: globalString, showingAlert: false)
 
                         }){VStack{
-                            Image(systemName: "w.square.fill")
+                            Image(systemName: "h.square.fill")
                             Text("Hangman")
                         }
                         }.padding(20)
@@ -114,6 +115,11 @@ struct ContentView: View {
                         // TicTacToe
                         NavigationLink(destination: {
                             VStack{
+                                HStack {
+                                    Spacer()
+                                    Text("Your Score: \(globalString.userScore)")
+                                        .padding(15)
+                                }
                                 Text(endGameText)
                                     .alert(endGameText, isPresented: $gameEnded){
                                         Button("Reset", role: .destructive, action: resetGame)
@@ -139,10 +145,22 @@ struct ContentView: View {
                             }
                         }) {
                             VStack{
-                                Image(systemName: "x.circle.fill")
+                                Image(systemName: "t.circle.fill")
                                 Text("TikTacToe")
                             }
                         }.padding(20)
+                        
+                        // Trivia
+                        NavigationLink(destination: {
+                            TriviaView(variable: globalString)
+                                .environmentObject(triviaManager)
+
+                        }){VStack{
+                            Image(systemName: "t.square.fill")
+                            Text("Trivia")
+                        }
+                        }.padding(20)
+                        
                         Spacer()
                         Spacer()
                     }.padding(20)
@@ -163,17 +181,20 @@ struct ContentView: View {
                 }
             }
             .tabItem{
-                Text("Hello")
+                Text("Game")
+                Label("Order", systemImage: "gamecontroller")
             }
             
             ScoreBoard()
                 .tabItem{
                     Text("Scoreboard")
+                    Label("Order", systemImage: "flag.checkered.2.crossed")
                 }
             
             LoginView()
                 .tabItem{
-                    Text("Hi")
+                    Text("Profile")
+                    Label("Order", systemImage: "person.circle")
                 }
         }
         .onAppear(perform: {
@@ -192,6 +213,26 @@ struct ContentView: View {
             if checkWinner(list: moves, letter: letter){
                 endGameText = "\(letter) has won!"
                 gameEnded = true
+                
+                // update user score
+                let db = Firestore.firestore()
+                let user = Auth.auth().currentUser
+                if let user = user {
+                    let docRef = db.collection("users").document(user.uid)
+                    docRef.getDocument { (document, error) in
+                        if let document = document, document.exists {
+                            let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+                            print("Document data: \(dataDescription)")
+                            let score = document.data()?["score"] as? Int ?? 0
+                            let newScore = score + 30
+                            docRef.updateData(["score": newScore])
+                            globalString.userScore = newScore
+                        } else {
+                            print("Document does not exist")
+                        }
+                    }
+                }
+                
                 break
             }
         }

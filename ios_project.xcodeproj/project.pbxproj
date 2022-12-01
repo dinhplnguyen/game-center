@@ -19,8 +19,15 @@
 		430BAAAB292F1DD2006E1531 /* user.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430BAAAA292F1DD2006E1531 /* user.swift */; };
 		430BAAAD292F2083006E1531 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430BAAAC292F2083006E1531 /* LoginView.swift */; };
 		430BAAB0292F3B9A006E1531 /* ScoreBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430BAAAF292F3B9A006E1531 /* ScoreBoard.swift */; };
+		43326AD0293175F100FCCA67 /* Trivia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43326ACE293175F100FCCA67 /* Trivia.swift */; };
+		43326AD52931767500FCCA67 /* TriviaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43326AD32931767500FCCA67 /* TriviaManager.swift */; };
+		43326AD62931767500FCCA67 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43326AD42931767500FCCA67 /* Answer.swift */; };
+		43326ADB293176C200FCCA67 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43326AD8293176C200FCCA67 /* QuestionView.swift */; };
+		43326ADC293176C200FCCA67 /* TriviaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43326AD9293176C200FCCA67 /* TriviaView.swift */; };
+		43326AE2293176F700FCCA67 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43326ADF293176F600FCCA67 /* PrimaryButton.swift */; };
+		43326AE3293176F700FCCA67 /* AnswerRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43326AE0293176F700FCCA67 /* AnswerRow.swift */; };
+		43326AE4293176F700FCCA67 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43326AE1293176F700FCCA67 /* ProgressBar.swift */; };
 		4341460F2914DE850079EBC1 /* RandomWordApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4341460E2914DE850079EBC1 /* RandomWordApi.swift */; };
-		4355DF3128FA1F660048BEF0 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4355DF3028FA1F660048BEF0 /* ButtonView.swift */; };
 		43AB4B192915AAD50000F59B /* XOButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AB4B182915AAD50000F59B /* XOButton.swift */; };
 		43AB4B1B2915AB0E0000F59B /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AB4B1A2915AB0D0000F59B /* Utils.swift */; };
 		43CB22E828F685AB00C55EFE /* ios_projectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CB22E728F685AB00C55EFE /* ios_projectApp.swift */; };
@@ -42,8 +49,15 @@
 		430BAAAA292F1DD2006E1531 /* user.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = user.swift; sourceTree = "<group>"; };
 		430BAAAC292F2083006E1531 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		430BAAAF292F3B9A006E1531 /* ScoreBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreBoard.swift; sourceTree = "<group>"; };
+		43326ACE293175F100FCCA67 /* Trivia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trivia.swift; sourceTree = "<group>"; };
+		43326AD32931767500FCCA67 /* TriviaManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriviaManager.swift; sourceTree = "<group>"; };
+		43326AD42931767500FCCA67 /* Answer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
+		43326AD8293176C200FCCA67 /* QuestionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
+		43326AD9293176C200FCCA67 /* TriviaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriviaView.swift; sourceTree = "<group>"; };
+		43326ADF293176F600FCCA67 /* PrimaryButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
+		43326AE0293176F700FCCA67 /* AnswerRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerRow.swift; sourceTree = "<group>"; };
+		43326AE1293176F700FCCA67 /* ProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		4341460E2914DE850079EBC1 /* RandomWordApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomWordApi.swift; sourceTree = "<group>"; };
-		4355DF3028FA1F660048BEF0 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		43AB4B182915AAD50000F59B /* XOButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XOButton.swift; sourceTree = "<group>"; };
 		43AB4B1A2915AB0D0000F59B /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		43CB22E428F685AB00C55EFE /* ios_project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ios_project.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -98,6 +112,54 @@
 			path = scoreboard;
 			sourceTree = "<group>";
 		};
+		43326AC2293174F400FCCA67 /* tictactoe */ = {
+			isa = PBXGroup;
+			children = (
+				43AB4B1A2915AB0D0000F59B /* Utils.swift */,
+				43AB4B182915AAD50000F59B /* XOButton.swift */,
+			);
+			path = tictactoe;
+			sourceTree = "<group>";
+		};
+		43326AC32931758C00FCCA67 /* trivia */ = {
+			isa = PBXGroup;
+			children = (
+				43326ACE293175F100FCCA67 /* Trivia.swift */,
+				43326ADE293176EA00FCCA67 /* Components */,
+				43326AD72931769500FCCA67 /* Views */,
+				43326AD22931766300FCCA67 /* Models */,
+			);
+			path = trivia;
+			sourceTree = "<group>";
+		};
+		43326AD22931766300FCCA67 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				43326AD42931767500FCCA67 /* Answer.swift */,
+				43326AD32931767500FCCA67 /* TriviaManager.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		43326AD72931769500FCCA67 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				43326AD8293176C200FCCA67 /* QuestionView.swift */,
+				43326AD9293176C200FCCA67 /* TriviaView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		43326ADE293176EA00FCCA67 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				43326AE0293176F700FCCA67 /* AnswerRow.swift */,
+				43326ADF293176F600FCCA67 /* PrimaryButton.swift */,
+				43326AE1293176F700FCCA67 /* ProgressBar.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		43CB22DB28F685AB00C55EFE = {
 			isa = PBXGroup;
 			children = (
@@ -119,10 +181,9 @@
 			children = (
 				43CB22E728F685AB00C55EFE /* ios_projectApp.swift */,
 				43CB22E928F685AB00C55EFE /* ContentView.swift */,
-				4355DF3028FA1F660048BEF0 /* ButtonView.swift */,
-				43AB4B182915AAD50000F59B /* XOButton.swift */,
-				43AB4B1A2915AB0D0000F59B /* Utils.swift */,
 				430BAAAE292F3B7C006E1531 /* scoreboard */,
+				43326AC2293174F400FCCA67 /* tictactoe */,
+				43326AC32931758C00FCCA67 /* trivia */,
 				43E87A4A292DCE2900282C49 /* hangman */,
 				430BAAA8292F1BE3006E1531 /* user */,
 				43CB22EB28F685AC00C55EFE /* Assets.xcassets */,
@@ -241,22 +302,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43326ADB293176C200FCCA67 /* QuestionView.swift in Sources */,
 				43CB22EA28F685AB00C55EFE /* ContentView.swift in Sources */,
 				43E87A58292DDF8800282C49 /* Header.swift in Sources */,
+				43326AD52931767500FCCA67 /* TriviaManager.swift in Sources */,
 				4341460F2914DE850079EBC1 /* RandomWordApi.swift in Sources */,
 				43E87A4E292DD35200282C49 /* Keyboard.swift in Sources */,
 				430BAAB0292F3B9A006E1531 /* ScoreBoard.swift in Sources */,
 				43AB4B192915AAD50000F59B /* XOButton.swift in Sources */,
 				430BAAAB292F1DD2006E1531 /* user.swift in Sources */,
 				43E87A4C292DCE6200282C49 /* RestartButton.swift in Sources */,
+				43326AE3293176F700FCCA67 /* AnswerRow.swift in Sources */,
+				43326ADC293176C200FCCA67 /* TriviaView.swift in Sources */,
+				43326AD0293175F100FCCA67 /* Trivia.swift in Sources */,
 				43E87A5A292DE0B300282C49 /* HangmanGame.swift in Sources */,
 				43CB22E828F685AB00C55EFE /* ios_projectApp.swift in Sources */,
 				43E87A54292DDE0800282C49 /* Definition.swift in Sources */,
 				43E87A56292DDEFA00282C49 /* GuessCount.swift in Sources */,
-				4355DF3128FA1F660048BEF0 /* ButtonView.swift in Sources */,
+				43326AD62931767500FCCA67 /* Answer.swift in Sources */,
 				43E87A52292DDCB100282C49 /* TempWord.swift in Sources */,
 				43AB4B1B2915AB0E0000F59B /* Utils.swift in Sources */,
+				43326AE2293176F700FCCA67 /* PrimaryButton.swift in Sources */,
 				430BAAAD292F2083006E1531 /* LoginView.swift in Sources */,
+				43326AE4293176F700FCCA67 /* ProgressBar.swift in Sources */,
 				43E87A50292DD88000282C49 /* GuessedLetter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
