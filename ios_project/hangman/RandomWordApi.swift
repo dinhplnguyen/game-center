@@ -23,7 +23,10 @@ class WordAPI : ObservableObject{
             return
         }
         
-        URLSession.shared.dataTask(with: url) { data, response, error in
+        var request = URLRequest(url: url)
+        request.setValue("c5tMEeOGL8x3cWiEBz6zqw==mwNwnmjX6DRyRpJS", forHTTPHeaderField: "X-Api-Key")
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
             let git = try! JSONDecoder().decode(Word.self, from: data!)
             print(git)
             DispatchQueue.main.async {
