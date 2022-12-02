@@ -100,84 +100,100 @@ struct ContentView: View {
         
         TabView {
             NavigationView {
-                VStack {
-                    HStack {
-                        //Hang man
-                        NavigationLink(destination: {
-                            HangmanGame(hangmanVariables: globalString, showingAlert: false)
+                ZStack {
+                    Color(red: 242/255, green: 225/255, blue: 207/255).edgesIgnoringSafeArea(.all)
+                    VStack (spacing:100) {
+                            //Hang man
+                            NavigationLink(destination: {
+                                HangmanGame(hangmanVariables: globalString, showingAlert: false)
 
-                        }){VStack{
-                            Image(systemName: "h.square.fill")
-                            Text("Hangman")
-                        }
-                        }.padding(20)
+                            }){VStack{
+                                Image(systemName: "h.square.fill").resizable().frame(width: 30, height: 30)
+                                Text("Hangman").font(.system(size: 30))
+                            }
+                            }.padding(20).foregroundColor(.red).overlay(
+                                RoundedRectangle(cornerRadius: 16)
+                                .stroke(.indigo, lineWidth: 5)
+                                .frame(width:200, height: 100)
+                                .shadow(radius: 5, x: 5, y: 5))
 
-                        // TicTacToe
-                        NavigationLink(destination: {
-                            VStack{
-                                HStack {
-                                    Spacer()
-                                    Text("Your Score: \(globalString.userScore)")
-                                        .padding(15)
-                                }
-                                Text(endGameText)
-                                    .alert(endGameText, isPresented: $gameEnded){
-                                        Button("Reset", role: .destructive, action: resetGame)
-                                    }
-                                Spacer()
-                                // Grid
-                                ForEach(ranges, id: \.self){
-                                    range in HStack{
-                                        ForEach(range, id: \.self){
-                                            i in XOButton(letter: $moves[i])
-                                                .simultaneousGesture(
-                                                    TapGesture()
-                                                        .onEnded{
-                                                            _ in playerTap(index: i)
-                                                        }
-                                                )
+                            // TicTacToe
+                            NavigationLink(destination: {
+                                ZStack {
+                                    
+                                        Color(red: 242/255, green: 225/255, blue: 207/255).edgesIgnoringSafeArea(.all)
+                                    VStack{
+                                        HStack {
+                                            Spacer()
+                                            Text("Your Score: \(globalString.userScore)")
+                                                .padding(15)
                                         }
+                                        Text(endGameText)
+                                            .alert(endGameText, isPresented: $gameEnded){
+                                                Button("Reset", role: .destructive, action: resetGame)
+                                            }
+                                        Spacer()
+                                        // Grid
+                                        ForEach(ranges, id: \.self){
+                                            range in HStack{
+                                                ForEach(range, id: \.self){
+                                                    i in XOButton(letter: $moves[i])
+                                                        .simultaneousGesture(
+                                                            TapGesture()
+                                                                .onEnded{
+                                                                    _ in playerTap(index: i)
+                                                                }
+                                                        )
+                                                }
+                                            }
+                                        }
+                                        Spacer()
+                                        // Grid
+                                        Button("Reset", action: resetGame)
                                     }
                                 }
-                                Spacer()
-                                // Grid
-                                Button("Reset", action: resetGame)
-                            }
-                        }) {
-                            VStack{
-                                Image(systemName: "t.circle.fill")
-                                Text("TikTacToe")
-                            }
-                        }.padding(20)
+                            }) {
+                                VStack{
+                                    Image(systemName: "t.circle.fill").resizable().frame(width: 30, height: 30)
+                                    Text("TicTacToe").font(.system(size: 30))
+                                }
+                            }.padding(20).foregroundColor(.cyan).overlay(
+                                RoundedRectangle(cornerRadius: 16)
+                                    .stroke(.indigo, lineWidth: 5)
+                                    .frame(width:200, height: 100)
+                                    .shadow(radius: 5, x: 5, y: 5))
                         
-                        // Trivia
-                        NavigationLink(destination: {
-                            TriviaView(variable: globalString)
-                                .environmentObject(triviaManager)
+                            
+                            // Trivia
+                            NavigationLink(destination: {
+                                TriviaView(variable: globalString)
+                                    .environmentObject(triviaManager)
 
-                        }){VStack{
-                            Image(systemName: "t.square.fill")
-                            Text("Trivia")
-                        }
-                        }.padding(20)
-                        
-                        Spacer()
-                        Spacer()
-                    }.padding(20)
-                    Spacer()
-                }
-//                .navigationTitle("Main Menu")
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .principal) {
-                        HStack {
-                            VStack {
-                                Text("Welcome").font(.headline)
-                                Text("hello " + globalString.userEmail)
+                            }){VStack{
+                                Image(systemName: "t.square.fill").resizable().frame(width: 30, height: 30)
+                                Text("Trivia").font(.system(size: 30))
                             }
-                        }
-                        Spacer()
+                            }.padding(20).foregroundColor(.green).overlay(
+                                RoundedRectangle(cornerRadius: 16)
+                                        .stroke(.indigo, lineWidth: 5)
+                                        .frame(width:200, height: 100)
+                                        .shadow(radius: 5, x: 5, y: 5)
+                            )
+                            
                     }
+                    .navigationBarTitleDisplayMode(.inline)
+                    .toolbarBackground(.indigo, for: .navigationBar)
+                    .toolbarBackground(.visible, for: .navigationBar)
+                    .toolbar {
+                        ToolbarItem(placement: .principal) {
+                            
+                                VStack {
+                                    Text("Welcome To Game Center!").font(.headline)
+                                    Text("hello, " + globalString.userEmail)
+                                }.padding(20)
+                            
+                        }
+                }
                 }
             }
             .tabItem{
@@ -197,6 +213,7 @@ struct ContentView: View {
                     Label("Order", systemImage: "person.circle")
                 }
         }
+        
         .onAppear(perform: {
             globalString.fetchUserScoreAndEmail()
         })

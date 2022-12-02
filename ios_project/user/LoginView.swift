@@ -20,49 +20,54 @@ struct LoginView: View {
     
     var body: some View {
         NavigationView {
-            VStack(spacing: 16) {
-                Picker("", selection: $isLogin) {
-                    Text("Log In")
-                        .tag(true)
-                    Text("Create Account")
-                        .tag(false)
-                }.pickerStyle(SegmentedPickerStyle())
-                    .padding()
-                TextField("Email", text: $email)
-                    .keyboardType(.emailAddress)
-                    .disableAutocorrection(true)
-                    .autocapitalization(.none)
-                    .textFieldStyle(.roundedBorder)
-                    .frame(width: 280, height: 45, alignment: .center)
-                SecureField("Password", text: $password)
-                    .textFieldStyle(.roundedBorder)
-                    .frame(width: 280, height: 45, alignment: .center)
-                Spacer()
-                Button(action: {
-                    if isLogin {
-                        loginUser()
-                    } else {
-                        createUser()
-                    }
-                }, label: {
-                    Text(isLogin ? "Log In" : "Create Account")
-                        .foregroundColor(.white)
-                
-                }).frame(width: 280, height: 45, alignment: .center)
-                    .background(Color.blue)
-                    .cornerRadius(8)
-
-                // logout button
-                Button(action: {
-                    logoutUser()
-                }, label: {
-                    Text("Log Out")
-                        .foregroundColor(.white)
-                }).frame(width: 280, height: 45, alignment: .center)
-                    .background(Color.blue)
-                    .cornerRadius(8) 
-
-            }.navigationTitle(isLogin ? "Welcome Back" : "Welcome")
+            ZStack {
+                Color(red: 242/255, green: 225/255, blue: 207/255).edgesIgnoringSafeArea(.all)
+                VStack(spacing: 16) {
+                    Picker("", selection: $isLogin) {
+                        Text("Log In")
+                            .tag(true)
+                        Text("Create Account")
+                            .tag(false)
+                    }.pickerStyle(SegmentedPickerStyle())
+                    
+                        .accentColor(Color.indigo)
+                        .padding()
+                    TextField("Email", text: $email)
+                        .keyboardType(.emailAddress)
+                        .disableAutocorrection(true)
+                        .autocapitalization(.none)
+                        .textFieldStyle(.roundedBorder)
+                        .frame(width: 280, height: 45, alignment: .center)
+                    SecureField("Password", text: $password)
+                        .textFieldStyle(.roundedBorder)
+                        .frame(width: 280, height: 45, alignment: .center)
+                    Spacer()
+                    Button(action: {
+                        if isLogin {
+                            loginUser()
+                        } else {
+                            createUser()
+                        }
+                    }, label: {
+                        Text(isLogin ? "Log In" : "Create Account")
+                            .foregroundColor(.white)
+                        
+                    }).frame(width: 280, height: 45, alignment: .center)
+                        .background(Color.indigo)
+                        .cornerRadius(8)
+                    
+                    // logout button
+                    Button(action: {
+                        logoutUser()
+                    }, label: {
+                        Text("Log Out")
+                            .foregroundColor(.white)
+                    }).frame(width: 280, height: 45, alignment: .center)
+                        .background(Color.indigo)
+                        .cornerRadius(8)
+                    
+                }.navigationTitle(isLogin ? "Welcome Back" : "Welcome")
+            }
         }
     }
     
@@ -74,20 +79,20 @@ struct LoginView: View {
             }
             print("Successfully logged in with ID: \(result?.user.uid ?? "")")
             
-                    // lead user to Home tab view after login
-        let tabView = ContentView()
-        // use UIWindowScene.windows to get the current window
-        let window = UIApplication.shared.connectedScenes
-            .filter({$0.activationState == .foregroundActive})
-            .map({$0 as? UIWindowScene})
-            .compactMap({$0})
-            .first?.windows
-            .filter({$0.isKeyWindow}).first
-        window?.rootViewController = UIHostingController(rootView: tabView)
-        window?.makeKeyAndVisible()
+            // lead user to Home tab view after login
+            let tabView = ContentView()
+            // use UIWindowScene.windows to get the current window
+            let window = UIApplication.shared.connectedScenes
+                .filter({$0.activationState == .foregroundActive})
+                .map({$0 as? UIWindowScene})
+                .compactMap({$0})
+                .first?.windows
+                .filter({$0.isKeyWindow}).first
+            window?.rootViewController = UIHostingController(rootView: tabView)
+            window?.makeKeyAndVisible()
             
         }
-
+        
     }
     
     private func createUser() {
@@ -97,7 +102,7 @@ struct LoginView: View {
                 return
             }
             print("Successfully created account with ID: \(result?.user.uid ?? "")")
-
+            
             // add user to database
             let user = User(id: result!.user.uid, email: email, score: 0)
             do {
@@ -107,7 +112,7 @@ struct LoginView: View {
             }
         })
     }
-
+    
     private func logoutUser() {
         do {
             try Auth.auth().signOut()

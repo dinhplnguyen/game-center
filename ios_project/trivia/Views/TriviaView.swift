@@ -16,39 +16,44 @@ struct TriviaView: View {
     @StateObject public var variable : GlobalString
     
     var body: some View {
-        VStack {
-            if triviaManager.reachedEnd {
-                HStack {
-                    Spacer()
-                    Text("Your Score: \(variable.userScore)")
-                        .padding(15)
-                }
-                
-                VStack(spacing: 20) {
-                    
-                    Text("Trivia Game End")
-                    
-                    Text("You have completed the game!")
-                    
-                    Text("You got \(triviaManager.score) out of \(triviaManager.length)")
-                    
-                    Text("You scored \(triviaManager.score*10)")
-                    
-                    Button {
-                        Task.init {
-                            await triviaManager.fetchTrivia()
-                        }
-                    } label: {
-                        PrimaryButton(text: "Play Again")
+        ZStack {
+            
+            Color(red: 242/255, green: 225/255, blue: 207/255).edgesIgnoringSafeArea(.all)
+            
+            VStack {
+                if triviaManager.reachedEnd {
+                    HStack {
+                        Spacer()
+                        Text("Your Score: \(variable.userScore)")
+                            .padding(15)
                     }
-                }.padding()
-                    .onAppear(perform: {
-                        updateScore(newscore: triviaManager.score*10)
-                        print("Score updated")
-                    })
-            } else {
-                QuestionView(variable: variable)
-                    .environmentObject(triviaManager)
+                    
+                    VStack(spacing: 20) {
+                        
+                        Text("Trivia Game End")
+                        
+                        Text("You have completed the game!")
+                        
+                        Text("You got \(triviaManager.score) out of \(triviaManager.length)")
+                        
+                        Text("You scored \(triviaManager.score*10)")
+                        
+                        Button {
+                            Task.init {
+                                await triviaManager.fetchTrivia()
+                            }
+                        } label: {
+                            PrimaryButton(text: "Play Again")
+                        }
+                    }.padding()
+                        .onAppear(perform: {
+                            updateScore(newscore: triviaManager.score*10)
+                            print("Score updated")
+                        })
+                } else {
+                    QuestionView(variable: variable)
+                        .environmentObject(triviaManager)
+                }
             }
         }
     }

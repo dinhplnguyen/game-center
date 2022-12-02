@@ -14,10 +14,10 @@ struct XOButton: View {
         ZStack{
             Circle()
                 .frame(width: 120, height: 120)
-                .foregroundColor(.black)
+                .foregroundColor(.blue)
             Circle()
                 .frame(width: 100, height: 100)
-                .foregroundColor(.white)
+                .foregroundColor(Color(red: 242/255, green: 225/255, blue: 207/255))
             Text(letter)
                 .font(.system(size: 50))
                 .bold()

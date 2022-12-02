@@ -16,30 +16,40 @@ struct ScoreBoard: View {
     
     var body: some View {
         NavigationView {
-            List(users.indices, id: \.self) { index in
-                // if this is the current user, highlight it. ok 
-                
-                
-                if users[index].email == Auth.auth().currentUser?.email {
-                    HStack {
-                        Text("\(index + 1).")
-                        Text(users[index].email)
-                        Spacer()
-                        Text("\(users[index].score)")
-                    }.foregroundColor(.green)
-                } else {
-                    HStack {
-                        Text("\(index + 1).")
-                        Text(users[index].email)
-                        Spacer()
-                        Text("\(users[index].score)")
+            
+            ZStack {
+                Color(red: 242/255, green: 225/255, blue: 207/255).edgesIgnoringSafeArea(.all)
+                List(users.indices, id: \.self) { index in
+                    
+                    if users[index].email == Auth.auth().currentUser?.email {
+                        HStack {
+                            Text("\(index + 1).")
+                            Text(users[index].email)
+                            Spacer()
+                            Text("\(users[index].score)")
+                        }.foregroundColor(.green)
+                            .listRowBackground(Color.indigo)
+                            .listRowSeparator(.visible)
+                    } else {
+                        HStack {
+                            Text("\(index + 1).")
+                            Text(users[index].email)
+                            Spacer()
+                            Text("\(users[index].score)")
+                        }.foregroundColor(.white)
+                        .listRowBackground(Color.indigo)
+                        
                     }
+                    
                 }
                 
+                .scrollContentBackground(.hidden)
+                
+                .navigationTitle("Score Board")
+                .onAppear(perform: loadData)
                 
             }
-            .navigationTitle("Score Board")
-            .onAppear(perform: loadData)
+            
         }
         
     }

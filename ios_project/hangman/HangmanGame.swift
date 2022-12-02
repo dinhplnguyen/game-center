@@ -13,40 +13,45 @@ struct HangmanGame: View {
     @State public var showingAlert : Bool
     
     var body: some View {
-        VStack {
-            Divider()
+        ZStack {
             
-            HStack {
+            Color(red: 242/255, green: 225/255, blue: 207/255).edgesIgnoringSafeArea(.all)
+            
+            VStack {
+                Divider()
+                
+                HStack {
+                    Spacer()
+                    Text("Your Score: \(hangmanVariables.userScore)")
+                        .padding(15)
+                }
+                
+                Header()
+                
+                GuessCount(hangmanVariables: hangmanVariables)
+                
                 Spacer()
-                Text("Your Score: \(hangmanVariables.userScore)")
-                    .padding(15)
+                
+                Definition_View(hangmanVariables: hangmanVariables)
+                
+                // Temporary guessed letter
+                TempWord(hangmanVariables: hangmanVariables)
+                
+                // Keyboard
+                Keyboard(hangmanVariables: hangmanVariables)
+                
+                // Letter that have guessed
+                GuessedLetter(hangmanVariables: hangmanVariables)
+                
+                // Restart Button
+                RestartButton(hangmanVariables: hangmanVariables,
+                              showingAlert: showingAlert)
             }
-            
-            Header()
-            
-            GuessCount(hangmanVariables: hangmanVariables)
-            
-            Spacer()
-            
-            Definition_View(hangmanVariables: hangmanVariables)
-            
-            // Temporary guessed letter
-            TempWord(hangmanVariables: hangmanVariables)
-            
-            // Keyboard
-            Keyboard(hangmanVariables: hangmanVariables)
-            
-            // Letter that have guessed
-            GuessedLetter(hangmanVariables: hangmanVariables)
-            
-            // Restart Button
-            RestartButton(hangmanVariables: hangmanVariables,
-                          showingAlert: showingAlert)
-        }
-        .navigationTitle("Hangman")
-        .onAppear(perform: {
-            hangmanVariables.newGame()
+            .navigationTitle("Hangman")
+            .onAppear(perform: {
+                hangmanVariables.newGame()
         })
+        }
     }
 }
 
